@@ -2,7 +2,7 @@ const products = [
   {
     name: "Netflix Premium", 
     category: "streaming", 
-    img: "https://i.ibb.co.com/VYMSWKfB/c410c7c8c7bb31013500d214a7da8a8b.jpg",
+    img: "https://i.ibb.co.com/2YMSpYCB/images-7.png",
     variants: [
       { variant: "Sharing 1p2u", durasi: "1 Bulan", price: 18000 },
       { variant: "Sharing 1p2u", durasi: "1 Bulan", price: 25000 },
