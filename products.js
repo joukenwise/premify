@@ -10,12 +10,17 @@ const products = [
     ]
   },
   {
-    name: "Disney+ Hotstar", 
-    category: "streaming", 
+    name: "Canva", 
+    category: "editing", 
     img: "https://i.ibb.co/abc456/disney.jpg",
     variants: [
-      { variant: "1 Bulan", durasi: "30 Hari", price: 40000 },
-      { variant: "6 Bulan", durasi: "180 Hari", price: 230000 }
+      { variant: "Member Pro", durasi: "2 Bulan", price: 3000 },
+      { variant: "Member Pro", durasi: "1 Tahun", price: 14000 },
+     { variant: "Member Edu", durasi: "LIFETIME", price: 19000 },
+     { variant: "Member Pro Admin", durasi: "1 Bulan", price: 8000 },
+     { variant: "Member Pro Admin", durasi: "2 Bulan", price: 17000 },
+     { variant: "Head", durasi: "1 Bulan", price: 13000 },
+     { variant: "Head", durasi: "2 Bulan", price: 20000 }
     ]
   },
   {
