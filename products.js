@@ -26,9 +26,12 @@ const products = [
   {
     name: "Spotify Premium", 
     category: "streaming", 
-    img: "https://i.ibb.co/pqr789/spotify.jpg",
+    img: "https://i.ibb.co.com/WpHBbTqn/images-22.png",
     variants: [
-      { variant: "1 Bulan", durasi: "30 Hari", price: 50000 }
+      { variant: "Student No Garansi", durasi: "1 Bulan", price: 15000 },
+      { variant: "Student Garansi 7d", durasi: "1 Bulan", price: 20000 },
+      { variant: "Student Garansi Full", durasi: "1 Bulan", price: 32000 },
+      { variant: "Student IndPlan No Garansi", durasi: "4 Bulan", price: 34000 }
     ]
   },
   {
