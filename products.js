@@ -12,7 +12,7 @@ const products = [
   {
     name: "Canva", 
     category: "editing", 
-    img: "https://i.ibb.co/abc456/disney.jpg",
+    img: "https://i.ibb.co.com/nK2LsBG/download-8.jpg",
     variants: [
       { variant: "Member Pro", durasi: "2 Bulan", price: 3000 },
       { variant: "Member Pro", durasi: "1 Tahun", price: 14000 },
