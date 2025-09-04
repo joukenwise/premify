@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Katalog Produk Premify</title>
+<style>
+:root{
+  --bg:#0b0f16;
+  --card:rgba(255,255,255,.08);
+  --glass:blur(12px) saturate(140%);
+  --brand:#8b5cf6;
+  --brand-2:#a855f7;
+  --text:#e6edf3;
+  --muted:#b8c0cc;
+  --accent:#ffd6d6;
+  --ring:rgba(139,92,246,.5);
+}
+*{box-sizing:border-box}
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image: url('https://i.ibb.co.com/MkzHJjV3/a750499b37ca921663b3513f3ce9714b.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+header {
+  position: sticky; top: 0; z-index: 10;
+  padding: 18px 24px; text-align: center; font-weight: 700; font-size: 1.4rem;
+  backdrop-filter: var(--glass);
+  background: linear-gradient(
+    180deg, 
+    rgba(0, 0, 0, 0.25),   /* overlay hitam untuk gelap */
+    rgba(139, 92, 246, 0.25)
+  );
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 8px 30px rgba(0,0,0,.25);
+}
+.toolbar{
+  display:flex; gap:12px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:6px;
+  font-size:.92rem; color:var(--muted);
+}
+.container{
+  padding:28px;
+  display:grid; gap:22px;
+  grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+  max-width:1400px; margin:0 auto;
+}
+.product-card{
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:18px; padding:18px; text-align:center;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  backdrop-filter:var(--glass);
+}
+.product-card:hover{
+  transform: translateY(-4px);
+  border-color:var(--ring);
+  box-shadow:0 12px 30px rgba(139,92,246,.15);
+}
+.product-logo{
+  width:96px; height:96px; border-radius:50%; object-fit:cover;
+  border:2px solid rgba(255,255,255,.22);
+  box-shadow:0 0 0 6px rgba(139,92,246,.18);
+  animation: float 6s ease-in-out infinite;
+  opacity:0;
+  transition:opacity .5s ease;
+}
+.product-logo.loaded{opacity:1;}
+@keyframes float{
+  0%,100%{ transform:translateY(0) }
+  50%{ transform:translateY(-6px) }
+}
+h3{ margin:10px 0 2px; font-size:1.1rem }
+.sold{ color:var(--muted); font-size:.88rem; margin-bottom:10px }
+select{
+  width:100%; padding:10px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.18);
+  background: linear-gradient(135deg, rgba(139,92,246,.35), rgba(168,85,247,.25));
+  color:var(--text); font-weight:600; outline:none;
+  transition:box-shadow .25s ease, transform .1s ease;
+}
+select:focus{ box-shadow:0 0 0 4px rgba(139,92,246,.2) }
+.price{ min-height:22px; margin:10px 0; color:var(--accent); font-weight:700; transition: all .3s ease; }
+.btn{
+  display:inline-block; padding:10px 16px; border-radius:999px; text-decoration:none; color:white; font-weight:700;
+  background:linear-gradient(90deg, var(--brand), var(--brand-2));
+  box-shadow:0 8px 24px rgba(139,92,246,.35);
+  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease, opacity .25s ease;
+}
+.btn:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(139,92,246,.45) }
+footer{ text-align:center; padding:30px 16px; color:var(--muted) }
+.badge{ font-size:.75rem; padding:.2rem .5rem; border-radius:10px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14) }
+.search{
+  width:min(680px,100%); margin:10px auto 0; display:flex; gap:10px; padding:8px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:14px;
+  backdrop-filter:var(--glass); align-items:center;
+}
+.search input {
+  flex: 1; background: transparent; border: 0; outline: 0; color: var(--text); font-size: .98rem; transition: all .2s; min-width: 0;
+}
+.search .count { flex-shrink: 0; white-space: nowrap; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<header>
+Katalog Produk Premify
+<div class="toolbar">
+  <div class="search">
+    <input id="q" placeholder="Cari produk... (mis. Netflix)" />
+    <span class="count" id="count"></span>
+  </div>
+  <select id="category" style="max-width:200px;">
+    <option value="all" selected>Semua Kategori</option>
+    <option value="streaming">Streaming Apps</option>
+    <option value="editing">Editing Apps</option>
+    <option value="other">Other</option>
+  </select>
+</div>
+</header>
+
+<main class="container" id="grid"></main>
+<footer>© 2025 Premify — semua harga dapat berubah sewaktu-waktu.</footer>
+
+<script src="products.js"></script>
+<script>
+const fmtID = n => new Intl.NumberFormat('id-ID').format(n);
+
+const toWA = (name, variant, durasi, price) => {
+  const msg = encodeURIComponent(
+    `Halo Premify, saya mau pesan:\n\n` +
+    `Produk : ${name}\n` +
+    `Tipe : ${variant}\n` +
+    `Durasi : ${durasi}\n` +
+    `Harga  : Rp ${fmtID(price)}\n\n` +
+    `Apakah masih tersedia? jika tersedia tolong kirimkan info pembayaran`
+  );
+  return `https://wa.me/6283820469781?text=${msg}`;
+};
+
+function animatePrice(el, target){
+  const current = parseInt(el.dataset.value || '0', 10);
+  const duration = 300;
+  const start = performance.now();
+
+  function step(time){
+    let progress = Math.min((time-start)/duration,1);
+    const value = Math.round(current + (target-current)*progress);
+    el.textContent = `Rp ${fmtID(value)}`;
+    el.dataset.value = value;
+    if(progress<1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+function render(list){
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  list.forEach((p, idx)=>{
+    const id = `p-${idx}`;
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <img class="product-logo" data-src="${p.img}" alt="${p.name}"/>
+      <h3>${p.name}</h3>
+      <div class="sold">Terjual <span class="sold-count">${(300+idx*7)%999+50}</span>+</div>
+      <select class="variant-select" id="${id}-sel">
+        <option value="" selected disabled>Pilih Varian</option>
+        ${p.variants.map(v => 
+          `<option value="${v.price}" data-variant="${v.variant}" data-durasi="${v.durasi}">
+            ${v.variant} — ${v.durasi} — Rp ${fmtID(v.price)}
+          </option>`).join('')}
+      </select>
+      <div class="price" id="${id}-price" data-value="0">Rp -</div>
+      <a class="btn" id="${id}-btn" href="#" target="_blank" rel="noopener" style="pointer-events:none;opacity:.5;">Order via WhatsApp</a>
+    `;
+    grid.appendChild(card);
+
+    const img = card.querySelector('.product-logo');
+    img.src = img.dataset.src;
+    img.onload = ()=>img.classList.add('loaded');
+
+    const sel = card.querySelector(`#${id}-sel`);
+    const priceEl = card.querySelector(`#${id}-price`);
+    const btn = card.querySelector(`#${id}-btn`);
+
+    sel.addEventListener('change', ()=>{
+      const opt = sel.selectedOptions[0];
+      const price = parseInt(opt.value,10);
+      const variant = opt.dataset.variant;
+      const durasi = opt.dataset.durasi;
+
+      animatePrice(priceEl, price);
+      btn.href = toWA(p.name, variant, durasi, price);
+      btn.style.pointerEvents = 'auto';
+      btn.style.opacity = '1';
+    });
+  });
+  document.getElementById('count').textContent = `${list.length} ditemukan`;
+}
+
+// Debounce helper
+function debounce(fn, delay){
+  let timer;
+  return function(...args){
+    clearTimeout(timer);
+    timer = setTimeout(()=>fn.apply(this, args), delay);
+  }
+}
+
+const q = document.getElementById('q');
+const category = document.getElementById('category');
+
+function filterAndRender(){
+  const term = q.value.trim().toLowerCase();
+  const cat = category.value;
+  const filtered = products.filter(p=> 
+    (cat==='all' || p.category===cat) &&
+    (!term || p.name.toLowerCase().includes(term))
+  );
+  render(filtered);
+}
+
+q.addEventListener('input', debounce(filterAndRender, 250));
+category.addEventListener('change', filterAndRender);
+
+render(products);
+</script>
+</body>
+</html>
