@@ -5,7 +5,7 @@ const products = [
     img: "https://i.ibb.co.com/2YMSpYCB/images-7.png",
     variants: [
       { variant: "Sharing 1p2u", durasi: "1 Bulan", price: 18000 },
-      { variant: "Sharing 1p2u", durasi: "1 Bulan", price: 25000 },
+      { variant: "Sharing 1p1u", durasi: "1 Bulan", price: 25000 },
       { variant: "Semi Private", durasi: "1 Bulan", price: 28000 }
     ]
   },
