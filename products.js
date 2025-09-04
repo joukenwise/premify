@@ -25,7 +25,7 @@ const products = [
   },
   {
     name: "Spotify Premium", 
-    category: "streaming", 
+    category: "other", 
     img: "https://i.ibb.co.com/WpHBbTqn/images-22.png",
     variants: [
       { variant: "Student No Garansi", durasi: "1 Bulan", price: 15000 },
