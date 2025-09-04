@@ -35,11 +35,12 @@ const products = [
     ]
   },
   {
-    name: "HBO Max", 
-    category: "streaming", 
-    img: "https://i.ibb.co/jd1234/hbomax.jpg",
+    name: "Capcut", 
+    category: "editing", 
+    img: "https://i.ibb.co.com/tPbFr8Dj/c410c7c8c7bb31013500d214a7da8a8b.jpg",
     variants: [
-      { variant: "1 Bulan", durasi: "30 Hari", price: 55000 }
+      { variant: "Sharing", durasi: "1 Bulan", price: 13000 },
+      { variant: "Private", durasi: "1 Bulan", price: 16000 },
     ]
   },
   {
