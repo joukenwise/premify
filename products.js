@@ -4,8 +4,9 @@ const products = [
     category: "streaming", 
     img: "https://i.ibb.co.com/VYMSWKfB/c410c7c8c7bb31013500d214a7da8a8b.jpg",
     variants: [
-      { variant: "1 Bulan", durasi: "30 Hari", price: 45000 },
-      { variant: "3 Bulan", durasi: "90 Hari", price: 130000 }
+      { variant: "Sharing 1p2u", durasi: "1 Bulan", price: 18000 },
+      { variant: "Sharing 1p2u", durasi: "1 Bulan", price: 25000 },
+      { variant: "Semi Private", durasi: "1 Bulan", price: 28000 }
     ]
   },
   {
