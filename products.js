@@ -59,7 +59,7 @@ const products = [
   {
     name: "Vidio", 
     category: "streaming", 
-    img: "https://i.ibb.co.com/tPbFr8Dj/c410c7c8c7bb31013500d214a7da8a8b.jpg",
+    img: "https://i.ibb.co.com/nstZfswY/unnamed.jpg",
     variants: [
       { variant: "Private Platinum Only Tv No Garansi", durasi: "1 Tahun", price: 7000 },
       { variant: "Share Platinum Mobile Only", durasi: "1 Bulan", price: 14000 },
