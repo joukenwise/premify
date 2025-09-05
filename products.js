@@ -42,5 +42,18 @@ const products = [
       { variant: "Sharing", durasi: "1 Bulan", price: 11000 },
       { variant: "Private", durasi: "1 Bulan", price: 14000 }
     ]
-  }
+  },  
+  {
+    name: "ChatGPT", 
+    category: "other", 
+    img: "https://i.ibb.co.com/Nnjgm6wK/images-16.png",
+    variants: [
+      { variant: "Private Member Team Plan Garansi 7d", durasi: "1 Bulan", price: 20000 },
+      { variant: "Private Member Team Plan Garansi 28d", durasi: "1 Bulan", price: 30000 },
+      { variant: "Private Plus Plan Garansi 1 Bulan", durasi: "3 Bulan", price: 53000 },
+      { variant: "Private Plus Plan Garansi 3 Bulan", durasi: "3 Bulan", price: 68000 },
+      { variant: "Owner Team Plan (max 5 member) Garansi 7d", durasi: "1 Bulan", price: 60000 },
+      { variant: "Owner Team Plan (max 5 member) Garansi 28d", durasi: "1 Bulan", price: 95000 }
+    ]
+  },
 ];
