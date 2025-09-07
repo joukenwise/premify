@@ -4,9 +4,13 @@ const products = [
     category: "streaming", 
     img: "https://i.ibb.co.com/2YMSpYCB/images-7.png",
     variants: [
-      { variant: "Sharing 1p2u", durasi: "1 Bulan", price: 16000 },
-      { variant: "Sharing 1p1u", durasi: "1 Bulan", price: 23000 },
-      { variant: "Semi Private", durasi: "1 Bulan", price: 26000 }
+      { variant: "Sharing 1p1u", durasi: "1 Bulan", price: 22000 },
+      { variant: "Sharing 1p1u", durasi: "2 Bulan", price: 42000 },
+      { variant: "Sharing 1p1u", durasi: "3 Bulan", price: 52000 },
+      { variant: "Sharing 1p2u", durasi: "1 Bulan", price: 13000 },
+      { variant: "Sharing 1p2u", durasi: "2 Bulan", price: 20000 },
+      { variant: "Sharing 1p2u", durasi: "3 Bulan", price: 30000 },
+      { variant: "Semi Private", durasi: "1 Bulan", price: 25000 },
     ]
   },
   {
